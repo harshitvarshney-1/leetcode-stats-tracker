@@ -1,79 +1,78 @@
-🧩 LeetCode Stats Tracker
+<h1 align="center">🚀 LeetCode Stats Visualizer</h1>
 
-A simple web app that lets you search any LeetCode username and view their problem-solving statistics — including Easy, Medium, and Hard progress — visualized using animated circular graphs 🎯
+<p align="center">
+  <img src="https://img.shields.io/badge/Made%20With-JavaScript-f7df1e?style=for-the-badge&logo=javascript&logoColor=black" />
+  <img src="https://img.shields.io/badge/Style-CSS3-264de4?style=for-the-badge&logo=css3&logoColor=white" />
+  <img src="https://img.shields.io/badge/API-LeetCode-orange?style=for-the-badge&logo=leetcode" />
+  <img src="https://img.shields.io/badge/Status-Active-success?style=for-the-badge" />
+</p>
 
-🚀 Features
+<p align="center">
+  A modern, interactive, and responsive web app that visualizes your <b>LeetCode problem-solving stats</b> in a clean dashboard.  
+  Built using <b>HTML, CSS, and Vanilla JavaScript</b> with animated circular progress graphs 🎯
+</p>
 
-✅ Fetches live user stats using the LeetCode Stats API
-✅ Displays progress for Easy / Medium / Hard questions
-✅ Smooth circular progress graphs using CSS Conic Gradient
-✅ Validates LeetCode usernames before searching
-✅ Responsive and minimal UI
+---
 
-🖼️ Preview
-🔍 Enter Username → Click “Search”
-📊 Instantly see solved counts and graph progress!
+## 🌟 Features
 
+✨ Real-time data fetched from the <a href="https://leetcode-stats-api.herokuapp.com/">LeetCode Stats API</a>  
+✨ Username validation with clean UI feedback  
+✨ Dynamic circular progress indicators for <b>Easy</b>, <b>Medium</b>, and <b>Hard</b> questions  
+✨ Responsive layout for all screen sizes  
+✨ Smooth animation and CSS transitions for each difficulty circle  
+✨ Displays total solved, acceptance rate, ranking, and more  
 
-Example UI elements:
+---
 
-Easy: Green circle (solved/total)
+## 🧠 Tech Stack
 
-Medium: Orange circle
+| Technology | Usage |
+|-------------|--------|
+| **HTML5** | Webpage structure |
+| **CSS3** | Styling & animations |
+| **JavaScript (Vanilla)** | API fetch & DOM updates |
+| **LeetCode API** | Data source |
 
-Hard: Red circle
+---
 
-🛠️ Tech Stack
+## ⚙️ Working Principle
 
-HTML5 – Structure
+1. User enters a **LeetCode username**  
+2. The app validates the username format  
+3. Fetches data from the LeetCode API  
+4. Dynamically updates stats and circular progress bars  
+5. Displays real-time analytics in a clean and modern interface  
 
-CSS3 (Conic Gradient) – Graph visualization
+---
 
-JavaScript (ES6) – API fetch, validation, and dynamic updates
+## 🧾 Core JavaScript
 
-LeetCode Stats API: https://leetcode-stats-api.herokuapp.com/
-
-⚙️ How It Works
-
-User enters a valid LeetCode username.
-
-JS validates it using a regex pattern:
-
-/^[a-zA-Z0-9](?:[a-zA-Z0-9_-]{1,13}[a-zA-Z0-9])?$/
-
-
-The app fetches user stats from:
-
-https://leetcode-stats-api.herokuapp.com/<username>
-
-
-Data such as solved questions, ranking, and acceptance rate are displayed.
-
-Circular progress bars update dynamically using:
-
-circle.style.setProperty("--progress-degree", progressDegree / 100);
-
-📂 Project Structure
-📁 LeetCode-Stats-Tracker
- ┣ 📜 index.html
- ┣ 📜 style.css
- ┗ 📜 script.js
-
-💻 JavaScript Highlights
-function updateProgress(solved, total, label, circle) {
+```js
+// Update circular progress dynamically
+function updateprogress(solved, total, label, circle) {
   const progressDegree = (solved / total) * 100;
   circle.style.setProperty("--progress-degree", progressDegree / 100);
   label.textContent = `${solved}/${total}`;
 }
 
+// Fetch user data and display on dashboard
 async function fetchUserDetails(username) {
   const url = `https://leetcode-stats-api.herokuapp.com/${username}`;
-  const response = await fetch(url);
-  const parsedata = await response.json();
-  displayUserData(parsedata);
+  try {
+    searchButton.textContent = 'Searching...';
+    const response = await fetch(url);
+    const parsedata = await response.json();
+    displayUserData(parsedata);
+  } catch (error) {
+    statsContainer.innerHTML = `<p>No data found</p>`;
+  } finally {
+    searchButton.textContent = 'Search';
+  }
 }
-
-🎨 CSS Snippet (Progress Circle)
+🎨 Modern CSS Styling
+css
+Copy code
 .easy-progress,
 .medium-progress,
 .hard-progress {
@@ -84,41 +83,60 @@ async function fetchUserDetails(username) {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: white;
+  color: #fff;
   font-weight: bold;
-  background: conic-gradient(var(--progress-color) calc(var(--progress-degree) * 360deg), #222 0deg);
-  transition: background 0.6s ease;
+  background: conic-gradient(
+    var(--progress-color) calc(var(--progress-degree) * 360deg),
+    #222 0deg
+  );
+  transition: background 0.6s ease-in-out;
 }
 
 .easy-progress { --progress-color: #4caf50; }
 .medium-progress { --progress-color: #ff9800; }
 .hard-progress { --progress-color: #f44336; }
+🧩 Example Stats Output
+yaml
+Copy code
+Total Solved: 32 / 3744
+Easy: 24 / 912
+Medium: 7 / 1949
+Hard: 1 / 883
+Acceptance Rate: 76.92%
+Ranking: 2879643
+Contribution Points: 76
+📸 Preview
+🖼️ You can add screenshots or GIF previews here once your UI is finalized.
 
-📈 Example API Response
-{
-  "status": "success",
-  "totalSolved": 32,
-  "totalQuestions": 3744,
-  "easySolved": 24,
-  "totalEasy": 912,
-  "mediumSolved": 7,
-  "totalMedium": 1949,
-  "hardSolved": 1,
-  "totalHard": 883,
-  "acceptanceRate": 76.92,
-  "ranking": 2879643
-}
+Example layout:
 
-🧠 Author
+markdown
+Copy code
+[ Username Input ] [ Search Button ]
+-------------------------------------------------
+| Easy | Medium | Hard |  → Circular Progress UI
+-------------------------------------------------
+| Total Solved | Acceptance | Rank | Points |
+⚡ Quick Start
+Clone the repository
 
-👨‍💻 Harshit Varshney
-🎓 B.Tech CSE | GLA University
-💡 Passionate about UI design, coding, and creative innovation
-📺 YouTube: @harshityt822
+bash
+Copy code
+git clone https://github.com/<your-username>/leetcode-stats-visualizer.git
+Open index.html in your browser
 
-📷 Instagram: @harshityt_
+Enter your LeetCode username
 
-⭐ Support
+Hit Search → watch your stats appear 🎯
 
-If you like this project, give it a star ⭐ on GitHub!
-Your support motivates me to build more open-source tools. 🚀
+👨‍💻 Author
+Harshit Varshney
+💻 B.Tech CSE | 🎨 UI Designer | 🎬 YouTuber
+📍 Mathura, India
+🔗 LinkedIn • Instagram • YouTube
+
+⭐ Support & Contributions
+If you like this project, please give it a ⭐ star on GitHub — it motivates me to build more open-source projects like this!
+Contributions, ideas, and suggestions are always welcome 💡
+
+<p align="center">Built with ❤️ by <b>Harshit Varshney</b></p> ```
