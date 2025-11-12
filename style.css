@@ -18,6 +18,7 @@ body {
   color: rgb(255, 255, 255);
   height: 100vh;
   display: flex;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
 }
@@ -95,4 +96,8 @@ h1 {
   flex-direction: row;
   justify-content: space-evenly;
   flex-wrap: wrap;
+}
+
+.footer{
+  margin-top: 30px;
 }
