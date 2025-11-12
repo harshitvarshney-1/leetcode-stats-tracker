@@ -70,9 +70,10 @@ async function fetchUserDetails(username) {
     searchButton.textContent = 'Search';
   }
 }
-🎨 Modern CSS Styling
-css
-Copy code
+```
+
+## 🎨 Modern CSS Styling
+```css
 .easy-progress,
 .medium-progress,
 .hard-progress {
@@ -95,9 +96,11 @@ Copy code
 .easy-progress { --progress-color: #4caf50; }
 .medium-progress { --progress-color: #ff9800; }
 .hard-progress { --progress-color: #f44336; }
-🧩 Example Stats Output
-yaml
-Copy code
+```
+
+## 🧩 Example Stats Output
+
+```yaml
 Total Solved: 32 / 3744
 Easy: 24 / 912
 Medium: 7 / 1949
@@ -105,38 +108,16 @@ Hard: 1 / 883
 Acceptance Rate: 76.92%
 Ranking: 2879643
 Contribution Points: 76
-📸 Preview
-🖼️ You can add screenshots or GIF previews here once your UI is finalized.
+```
 
-Example layout:
 
-markdown
-Copy code
-[ Username Input ] [ Search Button ]
--------------------------------------------------
-| Easy | Medium | Hard |  → Circular Progress UI
--------------------------------------------------
-| Total Solved | Acceptance | Rank | Points |
-⚡ Quick Start
-Clone the repository
-
-bash
-Copy code
-git clone https://github.com/<your-username>/leetcode-stats-visualizer.git
-Open index.html in your browser
-
-Enter your LeetCode username
-
-Hit Search → watch your stats appear 🎯
 
 👨‍💻 Author
 Harshit Varshney
 💻 B.Tech CSE | 🎨 UI Designer | 🎬 YouTuber
-📍 Mathura, India
-🔗 LinkedIn • Instagram • YouTube
 
 ⭐ Support & Contributions
 If you like this project, please give it a ⭐ star on GitHub — it motivates me to build more open-source projects like this!
 Contributions, ideas, and suggestions are always welcome 💡
 
-<p align="center">Built with ❤️ by <b>Harshit Varshney</b></p> ```
+<p align="center">Built with ❤️ by <b>Harshit Varshney</b></p>
